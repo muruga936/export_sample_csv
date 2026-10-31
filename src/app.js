@@ -67,6 +67,9 @@ app.post('/expenses', (req, res) => {
   res.status(201).json(row);
 });
 
+// CSV export lives in its own module; it reuses the strict date check above
+app.use(require('./export')(isValidDate));
+
 // --- routes end ---
 
 module.exports = app;
